@@ -2,14 +2,23 @@ import { Component } from "react";
 import { Card, Col, ListGroup } from "react-bootstrap";
 
 class SingleBook extends Component {
-    state = {
-        selected: false
-    }
+  state = {
+    selected: false,
+  };
   render() {
     return (
       <>
         <Col>
-          <Card border={this.state.selected ? "danger" : "border"} onClick={e => this.state.selected ? this.setState({selected: false}) : this.setState({selected: true})} style={{ width: "18rem" }}>
+          <Card
+            data-testid={`book-card-${this.props.element.asin}`}
+            border={this.state.selected ? "danger" : "border"}
+            onClick={(e) =>
+              this.state.selected
+                ? this.setState({ selected: false })
+                : this.setState({ selected: true })
+            }
+            style={{ width: "18rem" }}
+          >
             <Card.Img variant="top" src={this.props.element.img} />
             <Card.Body>
               <Card.Title>{this.props.element.title}</Card.Title>
